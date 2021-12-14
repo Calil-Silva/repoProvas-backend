@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
     "noImplicitAny": true,
-    "esModuleInterop": true,
-    "target": "ES6"
+    "esModuleInterop": true
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
