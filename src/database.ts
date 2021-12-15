@@ -1,10 +1,15 @@
-import pg from 'pg';
+import { getConnectionManager } from 'typeorm';
 import './setup';
 
-const { Pool } = pg;
+export default async function connection() {
+  const connectionManager = await getConnectionManager();
+  const connectionData = connectionManager.create({
+    name: 'default',
+    type: 'postgres',
+    url: process.env.DATABASE_URL,
+    entities: ['src/entities/*.ts'],
+  });
 
-const connection = new Pool({
-  connectionString: process.env.DATABASE_URL,
-});
-
-export default connection;
+  await connectionData.connect();
+  return connectionData;
+}

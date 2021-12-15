@@ -1,6 +1,8 @@
-import app from './app';
+import app, { init } from './app';
 import './setup';
 
-app.listen(process.env.PORT, () => {
-  console.log(`Listening on PORT ${process.env.PORT}`);
+init().then(() => {
+  app.listen(process.env.PORT, () => {
+    console.log(`Server is listening on port ${process.env.PORT}`);
+  });
 });
