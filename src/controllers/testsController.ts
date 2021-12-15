@@ -1,9 +1,8 @@
 import { Request, Response } from 'express';
-import { getAllTests } from '../services/testsServices';
+import * as textServices from '../services/testsService';
 
 async function listTests(req: Request, res: Response) {
-  const tests = await getAllTests();
-  console.log(tests);
+  const tests = await textServices.findTests();
 
   return res.status(200).send(tests);
 }

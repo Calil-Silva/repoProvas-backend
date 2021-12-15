@@ -10,7 +10,7 @@ import Tests from '../entities/Tests';
 async function getAllTests() {
   const handleTests = await getRepository(Tests)
     .createQueryBuilder('tests')
-    .select('tests.id')
+    .select('tests.id', 'testId')
     .addSelect('names.test_name', 'testName')
     .addSelect('categories.category_name', 'categoryName')
     .addSelect('subjects.subject_name', 'subjectName')
