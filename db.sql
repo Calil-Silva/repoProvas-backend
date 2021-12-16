@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.9 (Ubuntu 12.9-0ubuntu0.20.04.1)
--- Dumped by pg_dump version 12.9 (Ubuntu 12.9-0ubuntu0.20.04.1)
+-- Dumped from database version 14.0
+-- Dumped by pg_dump version 14.0
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -317,6 +317,9 @@ ALTER TABLE ONLY public.tests ALTER COLUMN id SET DEFAULT nextval('public.tests_
 --
 
 COPY public.categories (id, category_name) FROM stdin;
+1	P1
+2	P2
+3	2CH
 \.
 
 
@@ -325,6 +328,8 @@ COPY public.categories (id, category_name) FROM stdin;
 --
 
 COPY public.names (id, test_name) FROM stdin;
+1	2020.1
+2	2020.2
 \.
 
 
@@ -384,6 +389,8 @@ COPY public.subjects (id, subject_name) FROM stdin;
 --
 
 COPY public.tests (id, test_name_id, category_id, sub_pro_id, link, period_id) FROM stdin;
+5	2	1	5	http://...	1
+6	1	1	5	http://...	2
 \.
 
 
@@ -391,14 +398,14 @@ COPY public.tests (id, test_name_id, category_id, sub_pro_id, link, period_id) F
 -- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.categories_id_seq', 1, false);
+SELECT pg_catalog.setval('public.categories_id_seq', 3, true);
 
 
 --
 -- Name: names_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.names_id_seq', 1, false);
+SELECT pg_catalog.setval('public.names_id_seq', 2, true);
 
 
 --
@@ -433,7 +440,7 @@ SELECT pg_catalog.setval('public.subjects_id_seq', 3, true);
 -- Name: tests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.tests_id_seq', 1, false);
+SELECT pg_catalog.setval('public.tests_id_seq', 6, true);
 
 
 --
