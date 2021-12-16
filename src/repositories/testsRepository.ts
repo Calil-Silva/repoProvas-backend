@@ -8,9 +8,10 @@ import Subjects from '../entities/Subjects';
 import Tests from '../entities/Tests';
 
 async function getAllTests() {
-  const handleTests = await getRepository(Tests)
+  const tests = await getRepository(Tests)
     .createQueryBuilder('tests')
     .select('tests.id', 'testId')
+    .addSelect('tests.link', 'link')
     .addSelect('names.test_name', 'testName')
     .addSelect('categories.category_name', 'categoryName')
     .addSelect('subjects.subject_name', 'subjectName')
@@ -36,7 +37,11 @@ async function getAllTests() {
     .innerJoin(Periods, 'periods', 'tests.period_id = periods.id')
     .getRawMany();
 
-  return handleTests;
+  const professors = await getRepository(Professors).find({
+    select: ['professor_name'],
+  });
+
+  return { tests, professors };
 }
 
 export { getAllTests };
