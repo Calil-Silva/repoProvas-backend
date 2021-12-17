@@ -13,5 +13,5 @@ export default class Subjects {
         (professorsBySubjects) => ProfessorsBySubject,
         (subject) => Subjects,
     )
-    professorsBySubjects: ProfessorsBySubject;
+    professorsBySubjects: ProfessorsBySubject[];
 }

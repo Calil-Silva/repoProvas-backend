@@ -4,6 +4,15 @@ import { Test } from '../protocols/TestInterface';
 
 async function createNewTest(test: Test) {
     const { name, category, professor, subject, link, period } = test;
+    console.log('cheguei aqui');
+    const newTest = await getRepository(Tests).find({
+        where: {
+            period: { period_name: period },
+        },
+        relations: ['period'],
+    });
 
-    const newTest = await getRepository(Tests);
+    return newTest;
 }
+
+export { createNewTest };

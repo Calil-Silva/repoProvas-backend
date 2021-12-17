@@ -10,5 +10,5 @@ export default class Periods {
     period_name: string;
 
     @OneToMany((type) => Tests, (period) => Periods)
-    tests: Tests;
+    tests: Tests[];
 }

@@ -31,5 +31,5 @@ export default class ProfessorsBySubject {
     professor: Professors;
 
     @OneToMany((type) => Tests, (professorsBySubject) => ProfessorsBySubject)
-    tests: Tests;
+    tests: Tests[];
 }

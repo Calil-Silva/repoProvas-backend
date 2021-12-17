@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    ManyToOne,
+    JoinColumn,
+} from 'typeorm';
 import Categories from './Categories';
 import Names from './Names';
 import Periods from './Periods';
@@ -21,18 +27,22 @@ export default class Tests {
     @Column()
     link: string;
 
-    @Column()
-    period_id: number;
-
     @ManyToOne((type) => ProfessorsBySubject, (tests) => Tests)
+    @JoinColumn({ name: 'sub_pro_id' })
     professorsBySubject: ProfessorsBySubject;
 
     @ManyToOne((type) => Periods, (tests) => Tests)
+    @JoinColumn({ name: 'period_id' })
     period: Periods;
 
     @ManyToOne((type) => Names, (tests) => Tests)
+    @JoinColumn({ name: 'test_name_id' })
     name: Names;
 
     @ManyToOne((type) => Categories, (tests) => Tests)
+    @JoinColumn({ name: 'category_id' })
     category: Categories;
+
+    @Column()
+    period_id: number;
 }

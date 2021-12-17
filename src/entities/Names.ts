@@ -10,5 +10,5 @@ export default class Names {
     test_name: string;
 
     @OneToMany((type) => Tests, (name) => Names)
-    tests: Tests;
+    tests: Tests[];
 }
