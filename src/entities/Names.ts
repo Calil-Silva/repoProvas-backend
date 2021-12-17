@@ -1,10 +1,14 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import Tests from './Tests';
 
 @Entity('names')
 export default class Names {
     @PrimaryGeneratedColumn()
-      id: number;
+    id: number;
 
     @Column()
-      test_name: string;
+    test_name: string;
+
+    @OneToMany((type) => Tests, (name) => Names)
+    tests: Tests;
 }
