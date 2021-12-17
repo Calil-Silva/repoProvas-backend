@@ -8,7 +8,8 @@
     "build": "npx tsc --outDir dist/src",
     "start": "NODE_ENV=prod node dist/src/server.js",
     "dev": "NODE_ENV=dev npx nodemon --watch \"src/**\" --ext \"ts,json\" --exec \"ts-node src/server.ts\"",
-    "pretty": "npx pretty-quick"
+    "pretty": "npx pretty-quick",
+    "typeorm": "ts-node ./node_modules/typeorm/cli"
   },
   "keywords": [],
   "author": "",
