@@ -41,7 +41,15 @@ async function getAllTests() {
     select: ['professor_name'],
   });
 
-  return { tests, professors };
+  const periods = await getRepository(Periods).find({
+    select: ['period_name'],
+  });
+
+  const subjects = await getRepository(Subjects).find({
+    select: ['subject_name'],
+  });
+
+  return { tests, professors, periods, subjects };
 }
 
 export { getAllTests };
