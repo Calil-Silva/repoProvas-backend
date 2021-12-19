@@ -7,4 +7,10 @@ async function createTest(req: Request, res: Response) {
     return res.status(200).send(newTest);
 }
 
-export { createTest };
+async function getTestsParams(req: Request, res: Response) {
+    const testsPeriods = await testCreationService.getTestsParams();
+
+    return res.status(200).send(testsPeriods);
+}
+
+export { createTest, getTestsParams };

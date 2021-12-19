@@ -14,5 +14,6 @@ app.use(cors());
 app.use(express.json());
 
 app.post('/test-creation', testCreationController.createTest);
+app.get('/test-creation', testCreationController.getTestsParams);
 
 export default app;

@@ -6,8 +6,8 @@ export default class Periods {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
-    period_name: string;
+    @Column({ name: 'period_name' })
+    periodName: string;
 
     @OneToMany((type) => Tests, (period) => Periods)
     tests: Tests[];

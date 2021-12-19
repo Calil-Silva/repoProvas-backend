@@ -7,4 +7,10 @@ async function createTest(test: Test) {
     return newTest;
 }
 
-export { createTest };
+async function getTestsParams() {
+    const testsPeriods = await testCreationRepository.getTestsParams();
+
+    return testsPeriods;
+}
+
+export { createTest, getTestsParams };

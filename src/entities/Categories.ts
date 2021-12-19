@@ -6,8 +6,8 @@ export default class Categories {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
-    category_name: string;
+    @Column({ name: 'category_name' })
+    categoryName: string;
 
     @OneToMany((type) => Tests, (category) => Categories)
     tests: Tests[];

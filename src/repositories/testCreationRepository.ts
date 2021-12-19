@@ -26,11 +26,11 @@ async function createNewTest(test: Test) {
     )[0]?.id;
 
     const categoryId = (
-        await getRepository(Categories).find({ category_name: category })
+        await getRepository(Categories).find({ categoryName: category })
     )[0]?.id;
 
     const periodId = (
-        await getRepository(Periods).find({ period_name: period })
+        await getRepository(Periods).find({ periodName: period })
     )[0]?.id;
 
     const newTest = await getRepository(Tests).insert({
@@ -44,4 +44,18 @@ async function createNewTest(test: Test) {
     return newTest;
 }
 
-export { createNewTest };
+async function getTestsParams() {
+    const periodsNames = (await getRepository(Periods).find()).map(
+        ({ periodName }) => periodName,
+    );
+    const categoriesNames = (await getRepository(Categories).find()).map(
+        ({ categoryName }) => categoryName,
+    );
+    const professorsBySubject = await getRepository(ProfessorsBySubject).find({
+        relations: ['subject', 'professor'],
+    });
+
+    return periodsNames;
+}
+
+export { createNewTest, getTestsParams };
