@@ -1,5 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    OneToMany,
+    ManyToMany,
+    OneToOne,
+} from 'typeorm';
 import ProfessorsBySubject from './ProfessorsBySubject';
+import Tests from './Tests';
 
 @Entity('professors')
 export default class Professors {

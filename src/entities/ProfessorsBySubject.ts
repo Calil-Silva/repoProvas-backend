@@ -5,6 +5,7 @@ import {
     ManyToOne,
     ManyToMany,
     OneToMany,
+    JoinColumn,
 } from 'typeorm';
 import Professors from './Professors';
 import Subjects from './Subjects';
@@ -22,14 +23,13 @@ export default class ProfessorsBySubject {
     professor_id: number;
 
     @ManyToOne((type) => Subjects, (professorsBySubject) => ProfessorsBySubject)
+    @JoinColumn({ name: 'subject_id' })
     subject: Subjects;
 
-    @ManyToMany(
+    @ManyToOne(
         (type) => Professors,
         (professorsBySubject) => ProfessorsBySubject,
     )
+    @JoinColumn({ name: 'professor_id' })
     professor: Professors;
-
-    @OneToMany((type) => Tests, (professorsBySubject) => ProfessorsBySubject)
-    tests: Tests[];
 }

@@ -4,11 +4,15 @@ import {
     Column,
     ManyToOne,
     JoinColumn,
+    ManyToMany,
+    JoinTable,
 } from 'typeorm';
 import Categories from './Categories';
 import Names from './Names';
 import Periods from './Periods';
+import Professors from './Professors';
 import ProfessorsBySubject from './ProfessorsBySubject';
+import Subjects from './Subjects';
 
 @Entity('tests')
 export default class Tests {
@@ -42,6 +46,34 @@ export default class Tests {
     @ManyToOne((type) => Categories, (tests) => Tests)
     @JoinColumn({ name: 'category_id' })
     category: Categories;
+
+    @ManyToMany((type) => Professors, (tests) => Tests)
+    @JoinTable({
+        name: 'professors_by_subject',
+        joinColumn: {
+            name: 'id',
+            referencedColumnName: 'id',
+        },
+        inverseJoinColumn: {
+            name: 'professor_id',
+            referencedColumnName: 'id',
+        },
+    })
+    professor: Professors[];
+
+    @ManyToMany((type) => Subjects, (tests) => Tests)
+    @JoinTable({
+        name: 'professors_by_subject',
+        joinColumn: {
+            name: 'id',
+            referencedColumnName: 'id',
+        },
+        inverseJoinColumn: {
+            name: 'subject_id',
+            referencedColumnName: 'id',
+        },
+    })
+    subject: Subjects[];
 
     @Column()
     period_id: number;
