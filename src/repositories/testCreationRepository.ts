@@ -51,11 +51,16 @@ async function getTestsParams() {
     const categoriesNames = (await getRepository(Categories).find()).map(
         ({ categoryName }) => categoryName,
     );
-    const professorsBySubject = await getRepository(ProfessorsBySubject).find({
-        relations: ['subject', 'professor'],
-    });
+    const professorsBySubject = (
+        await getRepository(ProfessorsBySubject).find({
+            relations: ['subject', 'professor'],
+        })
+    ).map(({ professor, subject }) => ({
+        professor: professor.professor_name,
+        subject: subject.subject_name,
+    }));
 
-    return periodsNames;
+    return { periodsNames, categoriesNames, professorsBySubject };
 }
 
 export { createNewTest, getTestsParams };
