@@ -7,7 +7,6 @@ async function serverMiddlewareError(
     res: Response,
     next: NextFunction,
 ) {
-    console.log('Oia eu aqui');
     console.error(err);
 
     res.sendStatus(httpStatus.SERVER_ERROR);
