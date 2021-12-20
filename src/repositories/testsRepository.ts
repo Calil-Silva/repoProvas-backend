@@ -42,7 +42,7 @@ async function getAllTests() {
   });
 
   const periods = await getRepository(Periods).find({
-    select: ['period_name'],
+    select: ['periodName'],
   });
 
   const subjects = await getRepository(Subjects).find({
