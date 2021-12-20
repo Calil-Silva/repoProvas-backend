@@ -1,7 +1,7 @@
 import cors from 'cors';
 import express from 'express';
 import 'reflect-metadata';
-import * as testsController from '../src/controllers/testsController';
+import findRouter from './routes/findRouter';
 import creationRouter from './routes/creationRouter';
 
 import connection from './database';
@@ -15,7 +15,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get('/test-form', testsController.listTests);
+app.use('/test-form', findRouter);
 app.use('/test-creation', creationRouter);
 
 app.use(serverMiddlewareError);
