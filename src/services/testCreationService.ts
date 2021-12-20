@@ -4,7 +4,7 @@ import Names from '../entities/Names';
 import Periods from '../entities/Periods';
 import ProfessorsBySubject from '../entities/ProfessorsBySubject';
 import Tests from '../entities/Tests';
-import { ParamsError } from '../errors/paramsError';
+import { ParamsError } from '../errors/ParamsError';
 import { NewTest, Test } from '../protocols/TestInterface';
 
 async function createTest(test: Test): Promise<NewTest> {

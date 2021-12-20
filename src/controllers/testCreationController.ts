@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { nextTick } from 'process';
 import httpStatus from '../enum/statusCode';
-import { ParamsError } from '../errors/paramsError';
+import { ParamsError } from '../errors/ParamsError';
 import * as testCreationService from '../services/testCreationService';
 import { createParamsSchema } from '../validations/createTestSchema';
 
