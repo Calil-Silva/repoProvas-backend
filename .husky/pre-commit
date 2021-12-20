@@ -3,4 +3,4 @@
 
 npx pretty-quick --staged
 npx eslint --ext ts,tsx src/*
-# npx jest -i
+NODE_ENV=dev npx jest -i

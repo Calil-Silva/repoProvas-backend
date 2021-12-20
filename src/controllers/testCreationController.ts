@@ -3,7 +3,7 @@ import { nextTick } from 'process';
 import httpStatus from '../enum/statusCode';
 import { ParamsError } from '../errors/ParamsError';
 import * as testCreationService from '../services/testCreationService';
-import { createParamsSchema } from '../validations/createTestSchema';
+import { createParamsSchema } from '../validations/schemas/createTestSchema';
 
 async function createTest(req: Request, res: Response, next: NextFunction) {
     const { error: invalidTestParams } = createParamsSchema.validate(req.body, {

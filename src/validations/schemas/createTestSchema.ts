@@ -1,11 +1,12 @@
 import Joi from 'joi';
+import { regexPattern } from '../patterns/regexPatterns';
 
 const createParamsSchema = Joi.object({
-    name: Joi.string().trim().min(1).required(),
+    name: Joi.string().trim().min(1).pattern(regexPattern('name')).required(),
     category: Joi.string().trim().min(1).required(),
     professor: Joi.string().trim().min(1).required(),
     subject: Joi.string().trim().min(1).required(),
-    link: Joi.string().trim().min(1).required(),
+    link: Joi.string().trim().min(1).pattern(regexPattern('link')).required(),
     period: Joi.string().trim().min(1).required(),
 });
 
