@@ -36,7 +36,7 @@ describe('POST /test-creation', () => {
 
         const result = await agent.post('/test-creation').send(testParams);
 
-        expect(result.status).toEqual(httpStatus.CREATED);
+        expect(result.statusCode).toEqual(httpStatus.CREATED);
     });
 
     test('Should return status code 400 if params are not right', async () => {
@@ -51,6 +51,17 @@ describe('POST /test-creation', () => {
 
         const result = await agent.post('/test-creation').send(testParams);
 
-        expect(result.status).toEqual(httpStatus.BAD_REQUEST);
+        expect(result.statusCode).toEqual(httpStatus.BAD_REQUEST);
+    });
+});
+
+describe('GET /test-creation', () => {
+    test('Should return status code 200 and a body with the requested params', async () => {
+        const result = await agent.get('/test-creation');
+
+        expect(result.statusCode).toEqual(httpStatus.OK);
+        expect(result.body).toHaveProperty('periodsNames');
+        expect(result.body).toHaveProperty('categoriesNames');
+        expect(result.body).toHaveProperty('professorsBySubject');
     });
 });
