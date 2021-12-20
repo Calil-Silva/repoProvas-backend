@@ -1,10 +1,15 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
+import httpStatus from '../enum/statusCode';
 import * as testServices from '../services/testsService';
 
-async function listTests(req: Request, res: Response) {
-    const tests = await testServices.findTests();
+async function listTests(req: Request, res: Response, next: NextFunction) {
+    try {
+        const tests = await testServices.findTests();
 
-    return res.status(200).send(tests);
+        return res.status(httpStatus.ACCEPTED).send(tests);
+    } catch (error) {
+        return next(error);
+    }
 }
 
 export { listTests };
