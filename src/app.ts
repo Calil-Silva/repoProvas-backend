@@ -1,7 +1,7 @@
 import cors from 'cors';
 import express from 'express';
 import 'reflect-metadata';
-import * as testCreationController from './controllers/testCreationController';
+import creationRouter from './routes/creationRouter';
 
 import connection from './database';
 
@@ -13,7 +13,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.post('/test-creation', testCreationController.createTest);
-app.get('/test-creation', testCreationController.getTestsParams);
+app.use('/test-creation', creationRouter);
 
 export default app;
