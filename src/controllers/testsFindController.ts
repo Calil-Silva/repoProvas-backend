@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import httpStatus from '../enum/statusCode';
-import * as testServices from '../services/testsService';
+import * as testServices from '../services/testFindService';
 
 async function listTests(req: Request, res: Response, next: NextFunction) {
     try {
