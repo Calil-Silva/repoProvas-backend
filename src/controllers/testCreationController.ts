@@ -26,7 +26,7 @@ async function createTest(req: Request, res: Response, next: NextFunction) {
         return res.status(httpStatus.CREATED).send(newTest);
     } catch (error) {
         if (error instanceof ParamsError) {
-            console.log('Chueguei aqui');
+            console.error(error);
             return res.status(httpStatus.BAD_REQUEST).send(error.message);
         }
         return next(error);
@@ -40,6 +40,7 @@ async function getTestsParams(req: Request, res: Response, next: NextFunction) {
         return res.status(httpStatus.OK).send(testsPeriods);
     } catch (error) {
         if (error instanceof ParamsError) {
+            console.error(error);
             return res.status(httpStatus.BAD_REQUEST).send(error.message);
         }
         return nextTick(error);
