@@ -1,10 +1,22 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    OneToMany,
+    ManyToMany,
+    OneToOne,
+} from 'typeorm';
+import ProfessorsBySubject from './ProfessorsBySubject';
+import Tests from './Tests';
 
 @Entity('professors')
 export default class Professors {
     @PrimaryGeneratedColumn()
-      id: number;
+    id: number;
 
     @Column()
-      professor_name: string;
+    professor_name: string;
+
+    @OneToMany((type) => ProfessorsBySubject, (professor) => Professors)
+    professorsBySubject: ProfessorsBySubject[];
 }
